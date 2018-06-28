@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sheraton Django - Arisoft Riset Informatika</title>
+  <meta name="description" content="Sheraton Django">
+  <meta name="keywords" content="Sheraton Django">
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/django.css' %}">
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--banner-->
+  <div class="bg-color">
+  <section id="banner" class="banner" style="background: url({% static 'sheraton-palace-hotel-398845_1467.jpg' %}); no-repeat navbar-fixed-top; background-size: cover; position: relative;>
+    <div class="bg-color">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+              <a class="navbar-brand" href="#"><img src="{% static 'Sheraton-Hotels-logo.png' %}" class="img-responsive desktop" style="width: 50px; margin-top: -25px; filter: invert(100%)"></a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#banner">FIND & BOOK</a></li>
+                <li class=""><a href="#about">OUR STORY</a></li>
+                <li class=""><a href="#footer">CONTACT</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+      	<a class="navbar-brand" href="#"><img src="{% static 'Sheraton-Hotels-logo.png' %}" class="mobile" style="filter: invert(100%)"></a>
+        <div class="row">
+          	<div class="banner-info">
+            <div class="banner-logo text-center">
+            	<br>
+            </div>
+            <div class="banner-text text-center">
+              	<h5 class="company-text">Sheraton Hotel & Resort</h5>
+              	<p class="vision-text">excepteur sint occaetat cupidatat non proident</p>
+              	<a href="" class="btn btn-book">BOOK NOW <i class="fa fa-long-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  </div>
+  <!--/ banner-->
+  <!--service-->
+  <div class="bg-color"></div>
+  <!--/ service-->
+  <!--cta-->
+  <section id="infoi">
+    <div class="container">
+    	<div class="row">
+        <div class="col-md-4 col-sm-3 col-xs-6 thumbnail-mobile">
+          <div class="thumbnail">
+            <img src="{% static 'icon/room-key.svg' %}" alt="..." class="make-gold">
+            <h3>BOOK ROOM</h3>
+            <div class="caption">
+              
+              <p style="text-align: center;">Excepteur sint occeacat cupi datat non proident, sunt in culpa qui officia dese runtorn mollit anim id est laborum</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-3 col-xs-6 thumbnail-mobile">
+          <div class="thumbnail">
+            <img src="{% static 'icon/couch.svg' %}" alt="..." class="make-gold">
+            <h3>VIEW GALLERY</h3>
+            <div class="caption">
+              
+              <p style="text-align: center;">Excepteur sint occeacat cupi datat non proident, sunt in culpa qui officia dese runtorn mollit anim id est laborum</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-3 col-xs-6 thumbnail-mobile">
+          <div class="thumbnail">
+            <img src="{% static 'icon/room-service.svg' %}" alt="..." class="make-gold">
+            <h3>RESTAURANT</h3>
+            <div class="caption">
+              
+              <p style="text-align: center;">Excepteur sint occeacat cupi datat non proident, sunt in culpa qui officia dese runtorn mollit anim id est laborum</p>
+            </div>
+          </div>
+        </div>
+    	</div>
+    </div>
+  </section>
+  <!--cta-->
+  <!--about-->
+  <section id="about" class="section-padding">
+    <div class="container">
+      	<div class="row">
+      		<hr>
+      		<h5 style="text-align: center;" class="about-text">SUNT IN CULPA QUI OFFICIA DESERUNT MOLLIT</h5>
+      		<div class="caption">
+              <p style="text-align: center;" class="desc-text">Excepteur sint occeacat cupi datat non proident, sunt in culpa qui officia dese runtorn mollit anim id est laborum</p>
+            </div>
+      		<center>
+      		<video class="video-bg" width="640" height="480" poster="{% static 'relaxation-3065577_1920.jpg' %}" controls>
+			   <source src="{% static 'forarisoft.mp4' %}" type="video/mp4">
+			</video>
+			</center>
+      		<hr>
+      	</div>
+    </div>
+  </section>
+  <!--/ about-->
+  <!--room-->
+  <section id="room-team">
+    <div class="container">
+      <div class="row section-padding">
+        <div class="col-md-12">
+          <h3 style="text-align: center;">OUR ROOM</h3>
+          <hr class="botm-line">
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 thumbnail-mobile">
+          <div class="room">
+            <img src="{% static 'hotel-1979406_1280.jpg' %}" alt="..." class="team-img">
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 thumbnail-mobile">
+          <div class="room">
+            <img src="{% static 'hotel-room-1261900_1920.jpg' %}" alt="..." class="team-img">
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 thumbnail-mobile">
+          <div class="room">
+            <img src="{% static 'hotel-595121_1920.jpg' %}" alt="..." class="team-img">
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 thumbnail-mobile">
+          <div class="room">
+            <img src="{% static 'apartment-3306501_1920.jpg' %}" alt="..." class="team-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ room-->
+  <!--subscribe-->
+  <section id="subscribe" class="section-padding">
+    <div class="container">
+      <div class="row text-center">
+        <h3 style="text-align: center;">JOIN OUR SUBSCRIBERS</h3>
+      		<div class="caption">
+             	<p style="text-align: center;">10 000 sint occaecat cupidatat non proident sunt in culpa qui officia</p>
+            </div><br>
+        <a href="" class="transparent_btn">CLICK HERE TO SUBSCRIBE</a>
+    </div>
+  </section>
+  <!--footer-->
+  <footer id="footer">
+    <div class="top-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 marb20">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">Location</h4>
+            </div>
+            <div class="info-sec">
+              	<p>1401 South Grand Avenue</p>
+          		<p>Los Angeles, CA 90015 
+          		<p>(213) 748-2411</p>
+              	<p><a href="#banner" class="gray">see it in the maps<i class="fa fa-long-arrow-right"></i></a></p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-4 marb20">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">Company</h4>
+            </div>
+            <div class="info-sec">
+              	<p>Our Story</p>
+          		<p>Mission</p> 
+          		<p>Journal</p>
+              	<p>Careers</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-4 marb20 footer-mobile">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">Support</h4>
+            </div>
+            <div class="info-sec">
+              	<p>FAQ</p>
+          		<p>Contact Us</p> 
+          		<p>Policies</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-4 marb20 footer-mobile">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">Sheraton</h4>
+            </div>
+            <div class="info-sec">
+              <p>Sed do eiusmod tempor incidunt ut labore et dolore	 magna aliqua</p>
+              <p>Template made by <a href="#banner" class="gray">pixelhint.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="footer-line">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            © Copyright Arisoft Riset Informatika. All Rights Reserved
+            <div class="credits">
+              Designed by <a href="http://arisoft-id.com/">Arisoft</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </footer>
+  <!--/ footer-->
+
+  <script src="{% static 'js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/jquery.easing.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/custom.js'%}"></script>
+
+</body>
+
+</html>
