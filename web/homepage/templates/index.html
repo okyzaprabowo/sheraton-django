@@ -4,22 +4,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sheraton Django - Arisoft Riset Informatika</title>
+  {% for sitesetting in sitesettings %}
+  <title>{{sitesetting.site_title}}</title>
   <meta name="description" content="Sheraton Django">
   <meta name="keywords" content="Sheraton Django">
 
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/django.css' %}">
+  <link rel="stylesheet/less" type="text/css" href="{% static 'css/styles.less' %}" />
+  <link rel="stylesheet" type="text/css" href="{{sitesetting.site_theme}}">
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
   <!--banner-->
   <div class="bg-color">
-  <section id="banner" class="banner" style="background: url({% static 'sheraton-palace-hotel-398845_1467.jpg' %}); no-repeat navbar-fixed-top; background-size: cover; position: relative;>
-    <div class="bg-color">
+  {% for banner in banners %}
+  <section id="banner" class="banner" style="background: url({{ banner.banner_image }}); no-repeat navbar-fixed-top; background-size: cover; position: relative;">{% endfor %}
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
           <div class="col-md-12">
@@ -29,29 +32,40 @@
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				      </button>
-              <a class="navbar-brand" href="#"><img src="{% static 'Sheraton-Hotels-logo.png' %}" class="img-responsive desktop" style="width: 50px; margin-top: -25px; filter: invert(100%)"></a>
+              <a class="navbar-brand" href="#"><img src="{{sitesetting.site_logo}}" class="img-responsive desktop" style="width: 50px; margin-top: -25px; filter: invert(100%)"></a>
             </div>
+            {% endfor %}
             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#banner">FIND & BOOK</a></li>
-                <li class=""><a href="#about">OUR STORY</a></li>
-                <li class=""><a href="#footer">CONTACT</a></li>
+                {% for menu in menus %}
+                <li class="set-uppercase"><a href="{{menu.menu_url}}">{{menu.menu_name}}</a></li>
+                {% endfor %}
+                <!-- <li class="set-uppercase"><a href="#about">OUR STORY</a></li>
+                <li class="set-uppercase"><a href="#footer">CONTACT</a></li> -->
               </ul>
             </div>
           </div>
         </div>
       </nav>
       <div class="container">
-      	<a class="navbar-brand" href="#"><img src="{% static 'Sheraton-Hotels-logo.png' %}" class="mobile" style="filter: invert(100%)"></a>
+        {% for banner in banners %}
+      	<a class="navbar-brand" href="#">
+          {% for sitesetting in sitesettings %}
+          <img src="{{ sitesetting.site_logo }}" class="mobile" style="filter: invert(100%)">
+          {% endfor %}
+        </a>
         <div class="row">
           	<div class="banner-info">
             <div class="banner-logo text-center">
             	<br>
             </div>
             <div class="banner-text text-center">
-              	<h5 class="company-text">Sheraton Hotel & Resort</h5>
-              	<p class="vision-text">excepteur sint occaetat cupidatat non proident</p>
-              	<a href="" class="btn btn-book">BOOK NOW <i class="fa fa-long-arrow-right"></i></a>
+              	
+                <h5 class="company-text">{{ banner.banner_title }}</h5>
+                <p class="vision-text">{{ banner.banner_description }}</p>
+                
+              	<a href="" class="btn btn-book set-uppercase" data-toggle="modal" data-target="#myModal">{{ banner.banner_button }}&nbsp<i class="fa fa-long-arrow-right"></i></a>
+                {% endfor %}
             </div>
           </div>
         </div>
@@ -63,39 +77,21 @@
   <div class="bg-color"></div>
   <!--/ service-->
   <!--cta-->
+  
   <section id="infoi">
     <div class="container">
     	<div class="row">
+        {% for card in cards %}
         <div class="col-md-4 col-sm-3 col-xs-6 thumbnail-mobile">
-          <div class="thumbnail">
-            <img src="{% static 'icon/room-key.svg' %}" alt="..." class="make-gold">
-            <h3>BOOK ROOM</h3>
+          <div class="thumbnail" onclick="" style="cursor: pointer;">
+            <img src="{{ card.card_image }}" alt="..." class="make-gold">
+            <h3>{{ card.card_name }}</h3>
             <div class="caption">
-              
-              <p style="text-align: center;">Excepteur sint occeacat cupi datat non proident, sunt in culpa qui officia dese runtorn mollit anim id est laborum</p>
+              <p style="text-align: center;">{{ card.card_description }}</p>
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-3 col-xs-6 thumbnail-mobile">
-          <div class="thumbnail">
-            <img src="{% static 'icon/couch.svg' %}" alt="..." class="make-gold">
-            <h3>VIEW GALLERY</h3>
-            <div class="caption">
-              
-              <p style="text-align: center;">Excepteur sint occeacat cupi datat non proident, sunt in culpa qui officia dese runtorn mollit anim id est laborum</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-3 col-xs-6 thumbnail-mobile">
-          <div class="thumbnail">
-            <img src="{% static 'icon/room-service.svg' %}" alt="..." class="make-gold">
-            <h3>RESTAURANT</h3>
-            <div class="caption">
-              
-              <p style="text-align: center;">Excepteur sint occeacat cupi datat non proident, sunt in culpa qui officia dese runtorn mollit anim id est laborum</p>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
     	</div>
     </div>
   </section>
@@ -105,14 +101,17 @@
     <div class="container">
       	<div class="row">
       		<hr>
-      		<h5 style="text-align: center;" class="about-text">SUNT IN CULPA QUI OFFICIA DESERUNT MOLLIT</h5>
+          {% for video in videos %}
+      		<h5 style="text-align: center;" class="about-text set-uppercase">{{video.video_title}}</h5>
       		<div class="caption">
-              <p style="text-align: center;" class="desc-text">Excepteur sint occeacat cupi datat non proident, sunt in culpa qui officia dese runtorn mollit anim id est laborum</p>
+              <p style="text-align: center;" class="desc-text">{{video.video_description}}</p>
             </div>
       		<center>
-      		<video class="video-bg" width="640" height="480" poster="{% static 'relaxation-3065577_1920.jpg' %}" controls>
-			   <source src="{% static 'forarisoft.mp4' %}" type="video/mp4">
-			</video>
+          <div class="videoWrapper videoWrapper169 js-videoWrapper">
+            <iframe class="videoIframe js-videoIframe" src="" frameborder="0" allowTransparency="true" allowfullscreen data-src="{{video.video_url}}"></iframe>
+            <button class="videoPoster js-videoPoster" style="background-image:url({{video.video_poster}});">Play video</button>
+          </div>
+      {% endfor %}
 			</center>
       		<hr>
       	</div>
@@ -120,33 +119,82 @@
   </section>
   <!--/ about-->
   <!--room-->
-  <section id="room-team">
+  <section id="room-team" class="slider-desktop">
+    <div class="col-md-12">
+      <h3 style="text-align: center;" class="set-uppercase">Our Room</h3>
+      <hr class="botm-line">
+    </div>
     <div class="container">
+      <div class="row section-padding">
+        <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="carousel-col" onclick="" style="cursor: pointer;">
+              <div class="slider-container">
+              <img src="{{ sliders.0.slider_image }}" alt="..." class="team-img block img-responsive">
+              <div class="slider-overlay">
+                <div class="slider-text">{{ sliders.0.slider_title }}</div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="carousel-col slider-container" onclick="" style="cursor: pointer;">
+              <img src="{{ sliders.1.slider_image }}" alt="..." class="team-img block img-responsive">
+              <div class="slider-overlay">
+                <div class="slider-text">{{ sliders.1.slider_title }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="carousel-col slider-container" onclick="" style="cursor: pointer;">
+              <img src="{{ sliders.2.slider_image }}" alt="..." class="team-img block img-responsive">
+              <div class="slider-overlay">
+                <div class="slider-text">{{ sliders.2.slider_title }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="carousel-col slider-container" onclick="" style="cursor: pointer;">
+              <img src="{{ sliders.3.slider_image }}" alt="..." class="team-img block img-responsive">
+              <div class="slider-overlay">
+                <div class="slider-text">{{ sliders.3.slider_title }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="left carousel-control">
+          <a href="#carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </div>
+        <div class="right carousel-control">
+          <a href="#carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+  <section id="room-team" class="slider-mobile">
+    <div class="container" class="slider-mobile">
       <div class="row section-padding">
         <div class="col-md-12">
           <h3 style="text-align: center;">OUR ROOM</h3>
           <hr class="botm-line">
         </div>
+        {% for slider in sliders %}
         <div class="col-md-3 col-sm-3 col-xs-6 thumbnail-mobile">
           <div class="room">
-            <img src="{% static 'hotel-1979406_1280.jpg' %}" alt="..." class="team-img">
+            <img src="{{ slider.slider_image }}" alt="..." class="team-img">
           </div>
         </div>
-        <div class="col-md-3 col-sm-3 col-xs-6 thumbnail-mobile">
-          <div class="room">
-            <img src="{% static 'hotel-room-1261900_1920.jpg' %}" alt="..." class="team-img">
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-6 thumbnail-mobile">
-          <div class="room">
-            <img src="{% static 'hotel-595121_1920.jpg' %}" alt="..." class="team-img">
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-6 thumbnail-mobile">
-          <div class="room">
-            <img src="{% static 'apartment-3306501_1920.jpg' %}" alt="..." class="team-img">
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>
@@ -155,11 +203,13 @@
   <section id="subscribe" class="section-padding">
     <div class="container">
       <div class="row text-center">
-        <h3 style="text-align: center;">JOIN OUR SUBSCRIBERS</h3>
+        {% for subscribe in subscribes %}
+        <h3 style="text-align: center;" class="set-uppercase">{{ subscribe.subscribe_title }}</h3>
       		<div class="caption">
-             	<p style="text-align: center;">10 000 sint occaecat cupidatat non proident sunt in culpa qui officia</p>
+             	<p style="text-align: center;">{{ subscribe.subscribe_description }}</p>
             </div><br>
-        <a href="" class="transparent_btn">CLICK HERE TO SUBSCRIBE</a>
+        <a href="{{ subscribe.subscribe_button_url }}" class="transparent_btn">{{ subscribe.subscribe_button }}</a>
+        {% endfor %}
     </div>
   </section>
   <!--footer-->
@@ -169,67 +219,97 @@
         <div class="row">
           <div class="col-md-3 col-sm-4 marb20">
             <div class="ftr-tle">
-              <h4 class="white no-padding">Location</h4>
+              {% for footer1 in footer1s %}
+              <h4 class="white no-padding">{{ footer1.footer_title }}</h4>
             </div>
             <div class="info-sec">
-              	<p>1401 South Grand Avenue</p>
-          		<p>Los Angeles, CA 90015 
-          		<p>(213) 748-2411</p>
-              	<p><a href="#banner" class="gray">see it in the maps<i class="fa fa-long-arrow-right"></i></a></p>
+              	<p>{{ footer1.footer_street }}</p>
+          		  <p>{{ footer1.footer_district }}</p>
+          		  <p>{{ footer1.footer_phone }}</p>
+              	<p><a href="{{ footer1.footer_url }}" class="gray">{{ footer1.footer_link_name }}<i class="fa fa-long-arrow-right"></i></a></p>
+              {% endfor %}
             </div>
           </div>
           <div class="col-md-3 col-sm-4 marb20">
+            {% for footer2 in footer2s %}
             <div class="ftr-tle">
-              <h4 class="white no-padding">Company</h4>
+              <h4 class="white no-padding">{{ footer2.footer_title }}</h4>
             </div>
             <div class="info-sec">
-              	<p>Our Story</p>
-          		<p>Mission</p> 
-          		<p>Journal</p>
-              	<p>Careers</p>
+              	<p>{{ footer2.footer_url_name_1 }}</p>
+          		  <p>{{ footer2.footer_url_name_2 }}</p> 
+          		  <p>{{ footer2.footer_url_name_3 }}</p>
+              	<p>{{ footer2.footer_url_name_4 }}</p>
+                {% endfor %}
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-4 marb20 footer-mobile">
+            {% for footer3 in footer3s %}
+            <div class="ftr-tle">
+              <h4 class="white no-padding">{{ footer3.footer_title }}</h4>
+            </div>
+            <div class="info-sec">
+              	<p>{{ footer3.footer_url_name_1 }}</p>
+          		  <p>{{ footer3.footer_url_name_2 }}</p> 
+          		  <p>{{ footer3.footer_url_name_3 }}</p>
+                {% endfor %}
             </div>
           </div>
           <div class="col-md-3 col-sm-4 marb20 footer-mobile">
             <div class="ftr-tle">
-              <h4 class="white no-padding">Support</h4>
-            </div>
-            <div class="info-sec">
-              	<p>FAQ</p>
-          		<p>Contact Us</p> 
-          		<p>Policies</p>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 marb20 footer-mobile">
-            <div class="ftr-tle">
+              {% for footer4 in footer4s %}
               <h4 class="white no-padding">Sheraton</h4>
             </div>
             <div class="info-sec">
-              <p>Sed do eiusmod tempor incidunt ut labore et dolore	 magna aliqua</p>
-              <p>Template made by <a href="#banner" class="gray">pixelhint.com</a></p>
+              <p>{{ footer4.footer_description }}</p>
+              <p>{{ footer4.footer_end }}<a href="{{ footer4.footer_url}}" class="gray">&nbsp{{ footer4.footer_link_name }}</a></p>
+              {% endfor %}
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="footer-line">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            © Copyright Arisoft Riset Informatika. All Rights Reserved
-            <div class="credits">
-              Designed by <a href="http://arisoft-id.com/">Arisoft</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </footer>
   <!--/ footer-->
+  <!-- modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Booking Form</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form" method="post" id="reused_form" >
+            <p> Fill out this form to make a reservation. </p>
+            <div class="form-group">
+              <label for="name"> Name:</label>
+              <input type="text" class="form-control" id="name" name="name" required maxlength="50">
+            </div>
+            <div class="form-group">
+              <label for="email"> Phone:</label>
+              <input type="email" class="form-control" id="email" name="email" required maxlength="50">
+            </div>
+            <div class="form-group">
+              <label for="name"> Reservation Message:</label>
+              <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Your Reservation Detail Here" maxlength="6000" rows="7"></textarea>
+            </div>
+            <button type="submit" class="btn btn-lg btn-warning btn-block" id="btnContactUs">Send &rarr;</button>
+          </form>
+          <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Sent your reservation has been succeed!</h3> </div>
+          <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your reservation. </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="{% static 'js/jquery.min.js'%}"></script>
   <script src="{% static 'js/jquery.easing.min.js'%}"></script>
   <script src="{% static 'js/bootstrap.min.js'%}"></script>
   <script src="{% static 'js/custom.js'%}"></script>
+  <script src="{% static 'js/less.min.js'%}" ></script>
+  <script src="{% static 'js/form.js'%}" ></script>
 
 </body>
 
