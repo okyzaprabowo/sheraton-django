@@ -49,15 +49,39 @@ $(function()
             $btn.prop('orig_label',$btn.text());
             $btn.text('Sending ...');
         });
+
+        var csrftoken = $.cookie('csrftoken');
+        console.log('this is csrftoken', csrftoken);
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+        $.ajax('http://localhost:8000/reservation/insert/', {
+            type : 'POST',
+            contentType : 'application/json',
+            data : JSON.stringify(canvas),
+            success: after_form_submitted,
+
+        })
         
 
-                    $.ajax({
-                type: "POST",
-                url: 'handler.php',
-                data: $form.serialize(),
-                success: after_form_submitted,
-                dataType: 'json' 
-            });        
+            // $.ajax({
+            //     type: "POST",
+            //     url: 'handler.php',
+            //     data: $form.serialize(),
+            //     success: after_form_submitted,
+            //     dataType: 'json' 
+            // });        
         
       });	
 });
