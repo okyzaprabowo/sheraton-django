@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView 
 from homepage.models import *
 
+# Test dari local
 def index(request):
 	sitesettings = SiteSetting.objects.all()
 	banners = Banner.objects.all()
